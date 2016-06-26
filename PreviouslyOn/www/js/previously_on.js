@@ -3,7 +3,10 @@
 (function () {
     "use strict";
     var previously_on = angular.module("previously_on", [
-        "ionic"
+        "ionic",
+        "previously_on.controllers",
+        "previously_on.services",
+        "previously_on.filters"
     ]);
 
     previously_on.run(function ($ionicPlatform) {
