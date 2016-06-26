@@ -5,4 +5,7 @@
     "use strict";
 
     var controllers = angular.module("previously_on.controllers", []);
+
+    controllers.controller("WelcomeCtrl", function () {
+    });
 }());
