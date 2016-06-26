@@ -20,4 +20,16 @@
             navigator.splashscreen.hide();
         });
     });
+
+    previously_on.config(function ($stateProvider, $urlRouterProvider) {
+
+        $stateProvider
+            .state("welcome", {
+                url: "/",
+                templateUrl: "partials/welcome.html",
+                controller: "WelcomeCtrl",
+                controllerAs: "WCtrl"
+            });
+        $urlRouterProvider.otherwise("/");
+    });
 }());
