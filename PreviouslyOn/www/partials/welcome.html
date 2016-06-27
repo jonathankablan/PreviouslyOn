@@ -1,5 +1,14 @@
 <ion-view>
   <ion-content>
-    Welcome !!!
+    <form novalidate class="list list-inset">
+        <label class="item item-input">
+            <input type="text" placeholder="Email" ng-model="WCtrl.user.login">
+        </label>
+        <label class="item item-input">
+            <input type="password" placeholder="Password" ng-model="WCtrl.user.password">
+        </label>
+    <ion-checkbox ng-model="WCtrl.user.rememberMe">Remember me ?</ion-checkbox>
+    </form>
+    <button class="button button-block button-positive" ng-click="WCtrl.login(WCtrl.user)">Login</button>
   </ion-content>
 </ion-view>
