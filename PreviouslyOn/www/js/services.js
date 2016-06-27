@@ -4,5 +4,7 @@
 (function () {
     "use strict";
 
-    var services = angular.module("previously_on.services", []);
+    var services = angular.module("previously_on.services", [
+        "angular-md5"
+    ]);
 }());
