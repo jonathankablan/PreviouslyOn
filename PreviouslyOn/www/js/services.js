@@ -18,5 +18,11 @@
             }
         };
 
+        this.login = function (user, successCallback, errorCallback) {
+            user.password = md5.createHash(user.password || "");
+
+            $http.post(this.apiUrl + "members/auth", user, this.params)
+                .then(successCallback, errorCallback);
+        };
     });
 }());
