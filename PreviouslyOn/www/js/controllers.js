@@ -12,7 +12,7 @@
 
         UserService.getCredentials();
         if (UserService.credentials) {
-            $state.go("home.options", {}, {reload: true});
+            $state.go("home.shows", {}, {reload: true});
             return true;
         }
 
