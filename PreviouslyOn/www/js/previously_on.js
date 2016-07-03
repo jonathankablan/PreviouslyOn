@@ -30,6 +30,47 @@
                 templateUrl: "partials/welcome.html",
                 controller: "WelcomeCtrl",
                 controllerAs: "WCtrl"
+            })
+            .state("home", {
+                url: "/home",
+                abstract: true,
+                cache: false,
+                templateUrl: "partials/home.html",
+                controller: "HomeCtrl",
+                controllerAs: "HCtrl"
+            })
+            .state("home.options", {
+                cache: false,
+                url: "/options",
+                views: {
+                    "home-options": {
+                        templateUrl: "partials/options.html",
+                        controller: "OptionsCtrl",
+                        controllerAs: "OCtrl"
+                    }
+                }
+            })
+            .state("home.shows", {
+                cache: false,
+                url: "/shows",
+                views: {
+                    "home-shows": {
+                        templateUrl: "partials/shows.html",
+                        controller: "ShowsCtrl",
+                        controllerAs: "SCtrl"
+                    }
+                }
+            })
+            .state("home.friends", {
+                cache: false,
+                url: "/friends",
+                views: {
+                    "home-friends": {
+                        templateUrl: "partials/friends.html",
+                        controller: "FriendsCtrl",
+                        controllerAs: "FCtrl"
+                    }
+                }
             });
         $urlRouterProvider.otherwise("/");
     });
