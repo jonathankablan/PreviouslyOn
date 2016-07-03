@@ -9,6 +9,13 @@
     controllers.controller("WelcomeCtrl", function (UserService, $ionicPopup, $state) {
         this.user = {};
         var self = this;
+
+        UserService.getCredentials();
+        if (UserService.credentials) {
+            $state.go("home.options", {}, {reload: true});
+            return true;
+        }
+
         this.login = function (user) {
             UserService.login(user, function (response) {
                 var credentials = {};
