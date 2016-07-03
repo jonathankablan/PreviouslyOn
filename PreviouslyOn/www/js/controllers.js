@@ -29,5 +29,27 @@
                 });
             });
         };
+
+    });
+
+    controllers.controller("HomeCtrl", function ($state, $ionicHistory, UserService) {
+        UserService.getCredentials();
+        if (!UserService.credentials) {
+            $state.go("welcome", {}, {reload: true});
+            return false;
+        }
+        if (!UserService.credentials.rememberMe) {
+            UserService.clearCredentials();
+        }
+
+        this.logout = function () {
+            UserService.clearCredentials();
+            $state.go("welcome", {}, {reload: true});
+            return true;
+        };
+        $ionicHistory.nextViewOptions({
+            disableAnimate: true,
+            disableBack: true
+        });
     });
 }());
