@@ -165,7 +165,7 @@
         };
 
         this.postCommentOnEpisode = function (id, message, successCallback, errorCallback) {
-            $http.post(this.apiUrl + "comments/comment", {id: id, message: message}, this.params)
+            $http.post(this.apiUrl + "comments/comment", {type: 'episode', id: id, text: message}, this.params)
                 .then(successCallback, errorCallback);
         };
 

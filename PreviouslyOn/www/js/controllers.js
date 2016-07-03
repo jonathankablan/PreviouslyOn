@@ -368,7 +368,6 @@
         };
 
         this.postCommentEpisode = function (message) {
-            console.log(message);
             ShowService.postCommentOnEpisode(self.episodeToComment, message, function () {
                 $ionicPopup.alert({
                     title: "Well done !",
