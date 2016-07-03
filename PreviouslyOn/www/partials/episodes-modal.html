@@ -1,0 +1,38 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-royal" align-title="center">
+        <h1 class="title">Episodes</h1>
+        <button class="button button-clear button-primary" ng-click="SCtrl.hideEpisodes()">Cancel</button>
+    </ion-header-bar>
+    <ion-content class="padding">
+<div class="button-bar">
+  <div class="button button-positive" ng-click="SCtrl.showUnseenEpisodes()">Unseen Episodes</div>
+  <div class="button button-positive" ng-click=" SCtrl.showSeenEpisodes()">Seen Episodes</div>
+</div>
+      <div class="list" ng-if="SCtrl.isShowingUnseenEpisodes">
+      <div class="item text-center">
+        <h2>Unseen Episodes</h2>
+      </div>
+        <div class="item"
+
+          ng-repeat="episode in SCtrl.unseenEpisodes"
+          on-hold="SCtrl.getEpisodeDetails(episode)"
+          on-swipe-left="SCtrl.markEpisodeAsSeen(episode.id, false)"
+          on-swipe-right="SCtrl.markEpisodeAsSeen(episode.id, false)"
+          ng-click="SCtrl.showPopupEpisode(episode.id)">
+        <p>S{{ episode.season | leftpad: 2}} - {{ episode.title }}</p>
+        </div>
+      </div>
+
+      <div class="list" ng-show="SCtrl.isShowingSeenEpisodes">
+      <div class="item text-center">
+        <h2>Seen Episodes</h2>
+      </div>
+        <div class="item"
+          ng-repeat="episode in SCtrl.seenEpisodes"
+          on-hold="SCtrl.getEpisodeDetails(episode)"
+          ng-click="SCtrl.markEpisodeAsUnseen(episode.id)">
+        <p>S{{ episode.season | leftpad: 2}} - {{ episode.title }}</p>
+        </div>
+      </div>
+    </ion-content>
+</ion-modal-view>

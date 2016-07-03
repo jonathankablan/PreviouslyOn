@@ -1,0 +1,15 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-royal" align-title="center">
+        <h1 class="title">New comment</h1>
+        <button class="button button-clear button-primary" ng-click="SCtrl.hideCommentEpisode()">Cancel</button>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <div class="item item-body">
+    <label class="item-input-wrapper ion-ios-search">
+      <input type="text" ng-model="SCtrl.commentString">
+    </label>
+                <button class="button button-positive" ng-click="SCtrl.postCommentEpisode(SCtrl.commentString)">Add</button>
+            </div>
+        </div>
+    </ion-content>
+</ion-modal-view>

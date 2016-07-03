@@ -1,0 +1,19 @@
+<ion-view view-title="My TV shows !">
+     <ion-nav-buttons side="right">
+        <button class="button button-positive icon-right ion-plus" ng-click="SCtrl.searchShow()"></button>
+    </ion-nav-buttons>
+  <ion-content>
+  <ion-refresher
+    pulling-text="Refresh..."
+    on-refresh="SCtrl.getMyCurrentShows()">
+  </ion-refresher>
+  <div class="list">
+      <div class="item"
+        collection-repeat="show in SCtrl.myShows | orderBy: '+title'"
+        on-hold="SCtrl.getShowDetails(show)"
+        ng-click="SCtrl.showEpisodes(show.id)">
+        <p>{{ show.title }}</p>
+    </div>
+  </div>
+  </ion-content>
+</ion-view>

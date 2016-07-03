@@ -1,0 +1,27 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-royal" align-title="center">
+        <h1 class="title">{{ SCtrl.episodeToDetail.title }}</h1>
+        <button class="button button-clear button-primary" ng-click="SCtrl.hideEpisodeDetails()">Cancel</button>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <div class="item item-body">
+            <img ng-src="{{ SCtrl.episodeToDetail.img }}" style="width:100%;">
+            <span class="input-label">Description</span>
+            <p>
+                {{ SCtrl.episodeToDetail.description }}
+            </p>
+            <p>
+                <span class="input-label">Date de diffusion</span>
+                {{ SCtrl.episodeToDetail.date }}
+            </p>
+            <p>
+                <span class="input-label">Numéro</span>
+                {{ SCtrl.episodeToDetail.code }}
+            </p>
+            <p>
+                <span class="input-label">Note</span>
+                {{ SCtrl.episodeToDetail.note.mean | number: 2}} / 5
+            </p>
+        </div>
+    </ion-content>
+</ion-modal-view>
