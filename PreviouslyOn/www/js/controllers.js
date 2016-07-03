@@ -59,4 +59,16 @@
             disableBack: true
         });
     });
+
+    controllers.controller("OptionsCtrl", function () {
+
+    });
+
+    controllers.controller("ShowsCtrl", function () {
+
+    });
+
+    controllers.controller("FriendsCtrl", function () {
+
+    });
 }());
