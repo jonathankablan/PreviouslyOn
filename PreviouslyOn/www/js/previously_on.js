@@ -25,6 +25,7 @@
 
         $stateProvider
             .state("welcome", {
+                cache: false,
                 url: "/",
                 templateUrl: "partials/welcome.html",
                 controller: "WelcomeCtrl",

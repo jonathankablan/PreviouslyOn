@@ -6,9 +6,8 @@
 
     var controllers = angular.module("previously_on.controllers", []);
 
-    controllers.controller("WelcomeCtrl", function (UserService, $ionicPopup) {
+    controllers.controller("WelcomeCtrl", function (UserService, $ionicPopup, $state) {
         this.user = {};
-
         var self = this;
         this.login = function (user) {
             UserService.login(user, function (response) {
@@ -19,6 +18,8 @@
                 credentials.rememberMe = user.rememberMe || false;
                 UserService.setCredentials(credentials);
                 self.user = {};
+
+                $state.go("welcome", {}, {reload: true});
             }, function (err) {
                 $ionicPopup.alert({
                     title: "Uh-oh... something went wrong !",
