@@ -489,6 +489,23 @@
             $scope.searchUserModal.hide();
         };
 
+        this.searchFromInput = function (string) {
+            if (string.length > 1) {
+                UserService.searchUser(string, function (users) {
+                    self.searchResults = users;
+                }, function (err) {
+                    $ionicPopup.alert({
+                        title: "Uh-oh... something went wrong !",
+                        template: err.data.errors[0].text
+                    }).then(function () {
+                        self.hideSearch();
+                    });
+                });
+            } else {
+                self.searchResults = null;
+            }
+        };
+
         this.getFriends();
     });
 }());
