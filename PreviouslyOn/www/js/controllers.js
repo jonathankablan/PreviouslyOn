@@ -436,6 +436,24 @@
             });
         };
 
+        this.deleteShow = function (id) {
+            ShowService.deleteShow(id, function () {
+                $ionicPopup.alert({
+                    title: "Well done !",
+                    template: "You have deleted this show !"
+                }).then(function () {
+                    self.hideDetails();
+                });
+            }, function (err) {
+                $ionicPopup.alert({
+                    title: "Uh-oh... something went wrong !",
+                    template: err.data.errors[0].text
+                }).then(function () {
+                    self.hideDetails();
+                });
+            });
+        };
+
         this.getMyCurrentShows();
     });
 
