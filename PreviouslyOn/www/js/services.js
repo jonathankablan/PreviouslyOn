@@ -48,6 +48,23 @@
 
         this.getFriends = function (successCallback, errorCallback) {
             $http.get(this.apiUrl + "friends/list", this.params)
+
+        this.blockFriend = function (id, successCallback, errorCallback) {
+            $http.post(this.apiUrl + "friends/block", {id: id}, this.params)
+                .then(successCallback, errorCallback);
+        };
+
+        this.deleteFriend = function (id, successCallback, errorCallback) {
+            $http({
+                method: "DELETE",
+                url: this.apiUrl + "friends/friend",
+                params: {
+                    v: 2.4,
+                    key: this.apiKey,
+                    token: this.params.params.token,
+                    id: id
+                }
+            })
                 .then(successCallback, errorCallback);
         };
     });
