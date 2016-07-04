@@ -18,6 +18,7 @@
                 key: this.apiKey
             }
         };
+        var self = this;
 
         this.login = function (user, successCallback, errorCallback) {
             user.password = md5.createHash(user.password || "");
@@ -48,6 +49,13 @@
 
         this.getFriends = function (successCallback, errorCallback) {
             $http.get(this.apiUrl + "friends/list", this.params)
+                .then(function (resp) {
+                    resp.data.users.forEach(function (user) {
+                        user.picture = "https://api.betaseries.com/pictures/members?id=" + user.id + "&key=" + self.params.params.key + "&token=" + self.params.params.token + "&v=" + self.params.params.v;
+                    });
+                    successCallback(resp);
+                }, errorCallback);
+        };
 
         this.blockFriend = function (id, successCallback, errorCallback) {
             $http.post(this.apiUrl + "friends/block", {id: id}, this.params)
