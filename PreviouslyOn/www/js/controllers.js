@@ -412,6 +412,67 @@
             });
         };
 
+        this.manageFriend = function (id) {
+            $scope.data = {};
+            var myPopup;
+
+            myPopup = $ionicPopup.show({
+                template: 'What do you want to do ?',
+                title: 'Manage a friend',
+                scope: $scope,
+                cssClass: "popup-vertical-buttons",
+                buttons: [
+                    {text: 'Cancel'},
+                    {
+                        text: '<b>Delete</b>',
+                        type: 'button-positive',
+                        onTap: function () {
+                            UserService.deleteFriend(id, function () {
+                                $ionicPopup.alert({
+                                    title: "Well done !",
+                                    template: "You just deleted this friend."
+                                }).then(function () {
+                                    self.getFriends();
+                                    myPopup.close();
+                                });
+                            }, function (err) {
+                                $ionicPopup.alert({
+                                    title: "Uh-oh... something went wrong !",
+                                    template: err.data.errors[0].text
+                                }).then(function () {
+                                    myPopup.close();
+                                });
+                            });
+                        }
+                    },
+                    {
+                        text: '<b>Block</b>',
+                        type: 'button-positive',
+                        onTap: function () {
+                            UserService.blockFriend(id, function () {
+                                $ionicPopup.alert({
+                                    title: "Well done !",
+                                    template: "You just blocked this friend."
+                                }).then(function () {
+                                    self.getFriends();
+                                    myPopup.close();
+                                });
+                            }, function (err) {
+                                $ionicPopup.alert({
+                                    title: "Uh-oh... something went wrong !",
+                                    template: err.data.errors[0].text
+                                }).then(function () {
+                                    myPopup.close();
+                                    self.hideEpisodes();
+                                });
+                            });
+                        }
+                    }
+                ]
+            });
+
+        };
+
         this.getFriends();
     });
 }());
