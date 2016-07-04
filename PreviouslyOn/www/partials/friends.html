@@ -1,0 +1,14 @@
+<ion-view view-title="My friends !">
+     <ion-nav-buttons side="right">
+        <button class="button button-positive icon-right ion-plus" ng-click="FCtrl.searchUser()"></button>
+    </ion-nav-buttons>
+  <ion-content>
+  <div class="list">
+      <div class="item"
+        collection-repeat="friend in FCtrl.friends"
+        ng-click="FCtrl.manageFriend(friend.id)">
+        <p>{{ friend.login | capitalize }}</p>
+    </div>
+  </div>
+  </ion-content>
+</ion-view>
