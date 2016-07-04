@@ -19,4 +19,14 @@
             return number;
         };
     });
+
+    filters.filter('capitalize', function () {
+        return function (input) {
+            if (!input) {
+                return false;
+            }
+
+            return input.charAt(0).toUpperCase() + input.substr(1);
+        };
+    });
 }());
