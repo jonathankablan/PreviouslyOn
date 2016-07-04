@@ -67,6 +67,11 @@
                 .then(successCallback, errorCallback);
         };
 
+        this.addFriend = function (id, successCallback, errorCallback) {
+            $http.post(this.apiUrl + "friends/friend", {id: id}, this.params)
+                .then(successCallback, errorCallback);
+        };
+
         this.deleteFriend = function (id, successCallback, errorCallback) {
             $http({
                 method: "DELETE",
