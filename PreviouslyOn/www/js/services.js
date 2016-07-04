@@ -47,8 +47,11 @@
             delete this.params.params.token;
         };
 
-        this.getFriends = function (successCallback, errorCallback) {
-            $http.get(this.apiUrl + "friends/list", this.params)
+        this.getFriends = function (blocked, successCallback, errorCallback) {
+            var url = blocked === true
+                ? this.apiUrl + "friends/list?blocked=true"
+                : this.apiUrl + "friends/list";
+            $http.get(url, this.params)
                 .then(function (resp) {
                     successCallback(self.getUserPicture(resp.data.users));
                 }, errorCallback);
