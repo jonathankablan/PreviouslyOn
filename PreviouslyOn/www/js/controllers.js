@@ -401,9 +401,8 @@
         var self = this;
 
         this.getFriends = function () {
-            UserService.getFriends(function (resp) {
-                self.friends = resp.data.users;
-                console.log(resp);
+            UserService.getFriends(function (users) {
+                self.friends = users;
             }, function (err) {
                 $ionicPopup.alert({
                     title: "Uh-oh... something went wrong !",
