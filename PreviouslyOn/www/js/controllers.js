@@ -525,6 +525,49 @@
                 });
             });
         };
+
+        $ionicModal.fromTemplateUrl('partials/blocked-users-modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.blockedUsersModal = modal;
+        });
+
+        this.showBlockedUsers = function () {
+            UserService.getFriends(true, function (users) {
+                self.blockedUsers = users;
+                $scope.blockedUsersModal.show();
+            }, function (err) {
+                $ionicPopup.alert({
+                    title: "Uh-oh... something went wrong !",
+                    template: err.data.errors[0].text
+                });
+            });
+        };
+
+        this.hideBlockedUsers = function () {
+            self.getFriends();
+            $scope.blockedUsersModal.hide();
+        };
+
+        this.unblockFriend = function (id) {
+            UserService.unblockFriend(id, function (resp) {
+                $ionicPopup.alert({
+                    title: "Well done !",
+                    template: "The user '" + resp.data.member.login + "' is now unblocked !"
+                }).then(function () {
+                    self.hideBlockedUsers();
+                });
+            }, function (err) {
+                $ionicPopup.alert({
+                    title: "Uh-oh... something went wrong !",
+                    template: err.data.errors[0].text
+                }).then(function () {
+                    self.hideBlockedUsers();
+                });
+            });
+        };
+
         this.getFriends();
     });
 }());
