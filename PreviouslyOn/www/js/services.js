@@ -70,6 +70,20 @@
                 .then(successCallback, errorCallback);
         };
 
+        this.unblockFriend = function (id, successCallback, errorCallback) {
+            $http({
+                method: "DELETE",
+                url: this.apiUrl + "friends/block",
+                params: {
+                    v: 2.4,
+                    key: this.apiKey,
+                    token: this.params.params.token,
+                    id: id
+                }
+            })
+                .then(successCallback, errorCallback);
+        };
+
         this.addFriend = function (id, successCallback, errorCallback) {
             $http.post(this.apiUrl + "friends/friend", {id: id}, this.params)
                 .then(successCallback, errorCallback);
