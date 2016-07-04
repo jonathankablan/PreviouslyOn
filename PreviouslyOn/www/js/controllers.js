@@ -396,7 +396,22 @@
         this.getMyCurrentShows();
     });
 
-    controllers.controller("FriendsCtrl", function () {
+    controllers.controller("FriendsCtrl", function (UserService, $ionicModal, $scope, $ionicPopup) {
+        this.friends = [];
+        var self = this;
 
+        this.getFriends = function () {
+            UserService.getFriends(function (resp) {
+                self.friends = resp.data.users;
+                console.log(resp);
+            }, function (err) {
+                $ionicPopup.alert({
+                    title: "Uh-oh... something went wrong !",
+                    template: err.data.errors[0].text
+                });
+            });
+        };
+
+        this.getFriends();
     });
 }());
