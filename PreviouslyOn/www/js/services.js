@@ -50,11 +50,16 @@
         this.getFriends = function (successCallback, errorCallback) {
             $http.get(this.apiUrl + "friends/list", this.params)
                 .then(function (resp) {
-                    resp.data.users.forEach(function (user) {
-                        user.picture = "https://api.betaseries.com/pictures/members?id=" + user.id + "&key=" + self.params.params.key + "&token=" + self.params.params.token + "&v=" + self.params.params.v;
-                    });
-                    successCallback(resp);
+                    successCallback(self.getUserPicture(resp.data.users));
                 }, errorCallback);
+        };
+
+
+        this.getUserPicture = function (users) {
+            users.forEach(function (user) {
+                user.picture = "https://api.betaseries.com/pictures/members?id=" + user.id + "&key=" + self.params.params.key + "&token=" + self.params.params.token + "&v=" + self.params.params.v;
+            });
+            return users;
         };
 
         this.blockFriend = function (id, successCallback, errorCallback) {
