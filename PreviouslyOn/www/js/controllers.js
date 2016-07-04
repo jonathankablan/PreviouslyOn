@@ -252,18 +252,9 @@
         };
 
         this.getEpisodeDetails = function (episode) {
-            ShowService.getEpisodePicture(episode.id, function (resp) {
-                self.episodeToDetail = episode;
-                self.episodeToDetail.img = resp.data;
-                $scope.episodeDetailsModal.show();
-            }, function (err) {
-                $ionicPopup.alert({
-                    title: "Uh-oh... something went wrong !",
-                    template: err.data.errors[0].text
-                }).then(function () {
-                    self.hideEpisodes();
-                });
-            });
+            self.episodeToDetail = episode;
+            self.episodeToDetail.img = ShowService.getEpisodePicture(episode.id);
+            $scope.episodeDetailsModal.show();
         };
         this.hideEpisodeDetails = function () {
             this.episodeToDetail = null;

@@ -137,9 +137,8 @@
                 }, errorCallback);
         };
 
-        this.getEpisodePicture = function (id, successCallback, errorCallback) {
-            $http.get(this.apiUrl + "pictures/episodes?id=" + id, this.params)
-                .then(successCallback, errorCallback);
+        this.getEpisodePicture = function (id) {
+            return "https://api.betaseries.com/pictures/episodes?id=" + id + "&key=" + this.params.params.key + "&token=" + this.params.params.token + "&v=" + this.params.params.v;
         };
 
         this.markEpisodeAsSeen = function (id, bulk, successCallback, errorCallback) {
