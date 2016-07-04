@@ -143,9 +143,9 @@
         };
 
         this.markEpisodeAsSeen = function (id, bulk, successCallback, errorCallback) {
+            this.params.params.bulk = bulk;
             $http.post(this.apiUrl + "episodes/watched", {
-                id: id,
-                bulk: bulk
+                id: id
             }, this.params)
                 .then(successCallback, errorCallback);
         };
