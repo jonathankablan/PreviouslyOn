@@ -1,5 +1,5 @@
-/*jslint browser:true*/
-/*global angular window cordova StatusBar*/
+/*jslint browser:true this*/
+/*global angular window cordova StatusBar console*/
 
 (function () {
     "use strict";
@@ -63,7 +63,7 @@
     });
 
     controllers.controller("OptionsCtrl", function () {
-
+        console.log("Options");
     });
 
     controllers.controller("ShowsCtrl", function (ShowService, $ionicModal, $scope, $ionicPopup, $q) {
@@ -80,44 +80,44 @@
         var self = this;
 
         // Chargement des modales
-        $ionicModal.fromTemplateUrl('partials/show-details-modal.html', {
+        $ionicModal.fromTemplateUrl("partials/show-details-modal.html", {
             scope: $scope,
-            animation: 'slide-in-up'
+            animation: "slide-in-up"
         }).then(function (modal) {
             $scope.showDetailsModal = modal;
         });
 
-        $ionicModal.fromTemplateUrl('partials/search-show-modal.html', {
+        $ionicModal.fromTemplateUrl("partials/search-show-modal.html", {
             scope: $scope,
-            animation: 'slide-in-up'
+            animation: "slide-in-up"
         }).then(function (modal) {
             $scope.searchShowModal = modal;
         });
 
-        $ionicModal.fromTemplateUrl('partials/episodes-modal.html', {
+        $ionicModal.fromTemplateUrl("partials/episodes-modal.html", {
             scope: $scope,
-            animation: 'slide-in-up'
+            animation: "slide-in-up"
         }).then(function (modal) {
             $scope.episodesModal = modal;
         });
 
-        $ionicModal.fromTemplateUrl('partials/episode-details-modal.html', {
+        $ionicModal.fromTemplateUrl("partials/episode-details-modal.html", {
             scope: $scope,
-            animation: 'slide-in-up'
+            animation: "slide-in-up"
         }).then(function (modal) {
             $scope.episodeDetailsModal = modal;
         });
 
-        $ionicModal.fromTemplateUrl('partials/comment-episode-modal.html', {
+        $ionicModal.fromTemplateUrl("partials/comment-episode-modal.html", {
             scope: $scope,
-            animation: 'slide-in-up'
+            animation: "slide-in-up"
         }).then(function (modal) {
             $scope.commentEpisodeModal = modal;
         });
 
         this.getMyCurrentShows = function () {
             ShowService.myShows("current", function (shows) {
-                $scope.$broadcast('scroll.refreshComplete');
+                $scope.$broadcast("scroll.refreshComplete");
                 self.myShows = shows;
             }, function (err) {
                 $ionicPopup.alert({
@@ -283,15 +283,15 @@
             self.episodeToComment = id;
 
             myPopup = $ionicPopup.show({
-                template: 'What do you want to do ?',
-                title: 'Manage an episode',
+                template: "What do you want to do ?",
+                title: "Manage an episode",
                 scope: $scope,
                 cssClass: "popup-vertical-buttons",
                 buttons: [
-                    {text: 'Cancel'},
+                    {text: "Cancel"},
                     {
-                        text: '<b>Mark as Seen</b>',
-                        type: 'button-positive',
+                        text: "<b>Mark as Seen</b>",
+                        type: "button-positive",
                         onTap: function () {
                             ShowService.markEpisodeAsSeen(id, false, function (resp) {
                                 $ionicPopup.alert({
@@ -313,8 +313,8 @@
                         }
                     },
                     {
-                        text: '<b>Mark as Seen + Previous</b>',
-                        type: 'button-positive',
+                        text: "<b>Mark as Seen + Previous</b>",
+                        type: "button-positive",
                         onTap: function () {
                             ShowService.markEpisodeAsSeen(id, true, function (resp) {
                                 $ionicPopup.alert({
@@ -336,8 +336,8 @@
                         }
                     },
                     {
-                        text: '<b>Comment</b>',
-                        type: 'button-positive',
+                        text: "<b>Comment</b>",
+                        type: "button-positive",
                         onTap: function () {
                             self.showCommentEpisode();
                             myPopup.close();
@@ -393,9 +393,9 @@
             });
         };
 
-        $ionicModal.fromTemplateUrl('partials/archived-shows-modal.html', {
+        $ionicModal.fromTemplateUrl("partials/archived-shows-modal.html", {
             scope: $scope,
-            animation: 'slide-in-up'
+            animation: "slide-in-up"
         }).then(function (modal) {
             $scope.archivedShowsModal = modal;
         });
@@ -462,7 +462,7 @@
         var self = this;
 
         this.getFriends = function () {
-            UserService.getFriends(function (users) {
+            UserService.getFriends(false, function (users) {
                 self.friends = users;
             }, function (err) {
                 $ionicPopup.alert({
@@ -477,15 +477,15 @@
             var myPopup;
 
             myPopup = $ionicPopup.show({
-                template: 'What do you want to do ?',
-                title: 'Manage a friend',
+                template: "What do you want to do ?",
+                title: "Manage a friend",
                 scope: $scope,
                 cssClass: "popup-vertical-buttons",
                 buttons: [
-                    {text: 'Cancel'},
+                    {text: "Cancel"},
                     {
-                        text: '<b>Delete</b>',
-                        type: 'button-assertive',
+                        text: "<b>Delete</b>",
+                        type: "button-assertive",
                         onTap: function () {
                             UserService.deleteFriend(id, function () {
                                 $ionicPopup.alert({
@@ -506,8 +506,8 @@
                         }
                     },
                     {
-                        text: '<b>Block</b>',
-                        type: 'button-assertive',
+                        text: "<b>Block</b>",
+                        type: "button-assertive",
                         onTap: function () {
                             UserService.blockFriend(id, function () {
                                 $ionicPopup.alert({
@@ -533,9 +533,9 @@
 
         };
 
-        $ionicModal.fromTemplateUrl('partials/search-user-modal.html', {
+        $ionicModal.fromTemplateUrl("partials/search-user-modal.html", {
             scope: $scope,
-            animation: 'slide-in-up'
+            animation: "slide-in-up"
         }).then(function (modal) {
             $scope.searchUserModal = modal;
         });
@@ -587,9 +587,9 @@
             });
         };
 
-        $ionicModal.fromTemplateUrl('partials/blocked-users-modal.html', {
+        $ionicModal.fromTemplateUrl("partials/blocked-users-modal.html", {
             scope: $scope,
-            animation: 'slide-in-up'
+            animation: "slide-in-up"
         }).then(function (modal) {
             $scope.blockedUsersModal = modal;
         });
