@@ -123,8 +123,6 @@
                 $ionicPopup.alert({
                     title: "Uh-oh... something went wrong !",
                     template: err.data.errors[0].text
-                }).then(function () {
-                    self.user.password = "";
                 });
             });
         };
