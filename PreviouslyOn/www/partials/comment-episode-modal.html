@@ -4,11 +4,14 @@
         <button class="button button-clear button-primary" ng-click="SCtrl.hideCommentEpisode()">Cancel</button>
     </ion-header-bar>
     <ion-content class="padding">
-        <div class="item item-body">
-    <label class="item-input-wrapper ion-ios-search">
-      <input type="text" ng-model="SCtrl.commentString">
-    </label>
-                <button class="button button-positive" ng-click="SCtrl.postCommentEpisode(SCtrl.commentString)">Add</button>
+        <label class="item item-input">
+          <textarea ng-model="SCtrl.commentString"
+                    placeholder="Write your comment here...">
+          </textarea>
+        </label>
+        <div class="row">
+            <div class="col text-center">
+                <button class="button button-positive" ng-click="SCtrl.postCommentEpisode(SCtrl.commentString)">Comment</button>
             </div>
         </div>
     </ion-content>
