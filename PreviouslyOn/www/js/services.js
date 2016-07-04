@@ -80,6 +80,13 @@
             })
                 .then(successCallback, errorCallback);
         };
+
+        this.searchUser = function (string, successCallback, errorCallback) {
+            $http.get(this.apiUrl + "members/search?limit=25&login=" + string + "%", this.params)
+                .then(function (resp) {
+                    successCallback(self.getUserPicture(resp.data.users));
+                }, errorCallback);
+        };
     });
 
     services.service("ShowService", function ($http) {
