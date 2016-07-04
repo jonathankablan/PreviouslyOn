@@ -1,4 +1,4 @@
-/*jslint browser:true*/
+/*jslint browser:true this*/
 /*global angular window cordova StatusBar*/
 
 (function () {
@@ -28,15 +28,15 @@
         };
 
         this.setCredentials = function (credentials) {
-            localStorage.setItem('Previously_On_Credentials', JSON.stringify(credentials));
+            localStorage.setItem("Previously_On_Credentials", JSON.stringify(credentials));
         };
 
         this.getCredentials = function () {
-            this.credentials = JSON.parse(localStorage.getItem('Previously_On_Credentials')) || false;
+            this.credentials = JSON.parse(localStorage.getItem("Previously_On_Credentials")) || false;
         };
 
         this.clearCredentials = function () {
-            localStorage.removeItem('Previously_On_Credentials');
+            localStorage.removeItem("Previously_On_Credentials");
         };
 
         this.setToken = function (token) {
@@ -81,6 +81,20 @@
                     id: id
                 }
             })
+                .then(successCallback, errorCallback);
+        };
+
+        this.getFriendRequests = function (whichOnes, successCallback, errorCallback) {
+            var url;
+            switch (whichOnes) {
+            case "received":
+                url = this.apiUrl + "friends/requests?received=true";
+                break;
+            default:
+                url = this.apiUrl + "friends/requests";
+            }
+
+            $http.get(url, this.params)
                 .then(successCallback, errorCallback);
         };
 
@@ -154,7 +168,6 @@
                 break;
             default:
                 filteredShows = shows;
-                break;
             }
             return filteredShows;
         };
@@ -174,7 +187,6 @@
                 break;
             default:
                 filteredEpisodes = episodes;
-                break;
             }
             return filteredEpisodes;
         };
@@ -256,7 +268,7 @@
         };
 
         this.postCommentOnEpisode = function (id, message, successCallback, errorCallback) {
-            $http.post(this.apiUrl + "comments/comment", {type: 'episode', id: id, text: message}, this.params)
+            $http.post(this.apiUrl + "comments/comment", {type: "episode", id: id, text: message}, this.params)
                 .then(successCallback, errorCallback);
         };
 
