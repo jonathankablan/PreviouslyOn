@@ -297,6 +297,7 @@
                 template: 'What do you want to do ?',
                 title: 'Manage an episode',
                 scope: $scope,
+                cssClass: "popup-vertical-buttons",
                 buttons: [
                     {text: 'Cancel'},
                     {
