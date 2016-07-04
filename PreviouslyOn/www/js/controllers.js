@@ -329,7 +329,7 @@
                             ShowService.markEpisodeAsSeen(id, true, function (resp) {
                                 $ionicPopup.alert({
                                     title: "Well done !",
-                                    template: "You just mark this episode as seen."
+                                    template: "You just mark this episode as seen and all the previouses."
                                 }).then(function () {
                                     self.showEpisodes(resp.data.episode.show.id);
                                     myPopup.close();
