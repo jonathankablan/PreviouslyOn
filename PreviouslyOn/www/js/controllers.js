@@ -393,6 +393,48 @@
             });
         };
 
+        $ionicModal.fromTemplateUrl('partials/archived-shows-modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.archivedShowsModal = modal;
+        });
+
+        this.showArchivedShows = function () {
+            ShowService.myShows("archived", function (shows) {
+                self.archivedShows = shows;
+                $scope.archivedShowsModal.show();
+            }, function (err) {
+                $ionicPopup.alert({
+                    title: "Uh-oh... something went wrong !",
+                    template: err.data.errors[0].text
+                });
+            });
+        };
+
+        this.hideArchivedShows = function () {
+            self.getMyCurrentShows();
+            $scope.archivedShowsModal.hide();
+        };
+
+        this.unarchiveShow = function (id) {
+            ShowService.unarchiveShow(id, function () {
+                $ionicPopup.alert({
+                    title: "Well done !",
+                    template: "You just unarchived this show !"
+                }).then(function () {
+                    self.hideArchivedShows();
+                });
+            }, function (err) {
+                $ionicPopup.alert({
+                    title: "Uh-oh... something went wrong !",
+                    template: err.data.errors[0].text
+                }).then(function () {
+                    self.hideArchivedShows();
+                });
+            });
+        };
+
         this.getMyCurrentShows();
     });
 
