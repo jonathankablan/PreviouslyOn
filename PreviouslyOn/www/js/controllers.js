@@ -424,7 +424,7 @@
                     {text: 'Cancel'},
                     {
                         text: '<b>Delete</b>',
-                        type: 'button-positive',
+                        type: 'button-assertive',
                         onTap: function () {
                             UserService.deleteFriend(id, function () {
                                 $ionicPopup.alert({
@@ -446,7 +446,7 @@
                     },
                     {
                         text: '<b>Block</b>',
-                        type: 'button-positive',
+                        type: 'button-assertive',
                         onTap: function () {
                             UserService.blockFriend(id, function () {
                                 $ionicPopup.alert({
