@@ -184,6 +184,20 @@
                 .then(successCallback, errorCallback);
         };
 
+        this.unarchiveShow = function (id, successCallback, errorCallback) {
+            $http({
+                method: "DELETE",
+                url: this.apiUrl + "shows/archive",
+                params: {
+                    v: 2.4,
+                    key: this.apiKey,
+                    token: this.params.params.token,
+                    id: id
+                }
+            })
+                .then(successCallback, errorCallback);
+        };
+
         this.searchShow = function (string, successCallback, errorCallback) {
             $http.get(this.apiUrl + "shows/search?title=" + string, this.params)
                 .then(successCallback, errorCallback);
