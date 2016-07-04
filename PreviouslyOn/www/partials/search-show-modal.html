@@ -4,22 +4,22 @@
         <button class="button button-clear button-primary" ng-click="SCtrl.hideSearch()">Cancel</button>
     </ion-header-bar>
     <ion-content class="padding">
-<div class="item item-input-inset">
-    <label class="item-input-wrapper ion-ios-search">
-      <input type="text" placeholder="Search a show by title..." ng-model="SCtrl.searchString" ng-change="SCtrl.searchFromInput(SCtrl.searchString)">
-    </label>
-</div>
-  <div class="list">
-      <div class="item"
-        collection-repeat="show in SCtrl.searchResults"
-        on-hold="SCtrl.getShowDetails(show)">
-        <div class="row">
-            <span>{{ show.title }}</span>
-           <div class="col text-right">
-            <button ng-if="show.user.remaining === 0" class="button button-small icon-right ion-plus button-positive" ng-click="SCtrl.addShow(show.id)">Add</button>
+      <div class="item item-input-inset">
+          <label class="item-input-wrapper ion-ios-search">
+            <input type="text" placeholder="Search a show by title..." ng-model="SCtrl.searchString" ng-change="SCtrl.searchFromInput(SCtrl.searchString)">
+          </label>
+      </div>
+      <div class="list">
+          <div class="item"
+            collection-repeat="show in SCtrl.searchResults"
+            on-hold="SCtrl.getShowDetails(show)">
+            <div class="row">
+                <span>{{ show.title }}</span>
+               <div class="col text-right">
+                <button ng-if="show.user.remaining === 0" class="button button-small icon-right ion-plus button-positive" ng-click="SCtrl.addShow(show.id)">Add</button>
+                </div>
             </div>
         </div>
-    </div>
-  </div>
+      </div>
     </ion-content>
 </ion-modal-view>
