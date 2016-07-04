@@ -479,6 +479,16 @@
             $scope.searchUserModal = modal;
         });
 
+        this.searchUser = function () {
+            $scope.searchUserModal.show();
+        };
+
+        this.hideSearch = function () {
+            self.searchString = "";
+            self.searchResults = null;
+            $scope.searchUserModal.hide();
+        };
+
         this.getFriends();
     });
 }());
