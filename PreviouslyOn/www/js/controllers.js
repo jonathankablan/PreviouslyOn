@@ -506,6 +506,25 @@
             }
         };
 
+        this.addFriend = function (id) {
+            UserService.addFriend(id, function (resp) {
+                console.log(resp);
+                $ionicPopup.alert({
+                    title: "Well done :)",
+                    template: "You've just added '" + resp.data.member.login + "' to your friends !"
+                }).then(function () {
+                    self.getFriends();
+                    self.hideSearch();
+                });
+            }, function (err) {
+                $ionicPopup.alert({
+                    title: "Uh-oh... something went wrong !",
+                    template: err.data.errors[0].text
+                }).then(function () {
+                    self.hideSearch();
+                });
+            });
+        };
         this.getFriends();
     });
 }());
