@@ -45,6 +45,11 @@
         this.unsetToken = function () {
             delete this.params.params.token;
         };
+
+        this.getFriends = function (successCallback, errorCallback) {
+            $http.get(this.apiUrl + "friends/list", this.params)
+                .then(successCallback, errorCallback);
+        };
     });
 
     services.service("ShowService", function ($http) {
