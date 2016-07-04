@@ -1,0 +1,20 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-royal" align-title="center">
+        <h1 class="title">Blocked Users</h1>
+        <button class="button button-clear button-primary" ng-click="FCtrl.hideBlockedUsers()">Cancel</button>
+    </ion-header-bar>
+    <ion-content class="padding">
+      <div class="list">
+          <div class="item item-avatar"
+            collection-repeat="user in FCtrl.blockedUsers"
+            <div class="row">
+                <img ng-src="{{ user.picture }}">
+                <span>{{ user.login }}</span>
+               <div class="col text-right">
+                <button ng-if="user.in_account === false" class="button button-small icon-right ion-minus button-positive" ng-click="FCtrl.unblockFriend(user.id)">Unblock</button>
+                </div>
+            </div>
+        </div>
+      </div>
+    </ion-content>
+</ion-modal-view>
