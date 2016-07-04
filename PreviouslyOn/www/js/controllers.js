@@ -472,6 +472,13 @@
 
         };
 
+        $ionicModal.fromTemplateUrl('partials/search-user-modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.searchUserModal = modal;
+        });
+
         this.getFriends();
     });
 }());
