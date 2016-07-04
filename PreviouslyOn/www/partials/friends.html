@@ -4,9 +4,10 @@
     </ion-nav-buttons>
   <ion-content>
   <div class="list">
-      <div class="item"
+      <div class="item item-avatar"
         collection-repeat="friend in FCtrl.friends"
         ng-click="FCtrl.manageFriend(friend.id)">
+        <img ng-src="{{ friend.picture }}">
         <p>{{ friend.login | capitalize }}</p>
     </div>
   </div>
