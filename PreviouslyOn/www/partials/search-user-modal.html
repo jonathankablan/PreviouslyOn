@@ -1,0 +1,25 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-royal" align-title="center">
+        <h1 class="title">Add a friend !</h1>
+        <button class="button button-clear button-primary" ng-click="FCtrl.hideSearch()">Cancel</button>
+    </ion-header-bar>
+    <ion-content class="padding">
+<div class="item item-input-inset">
+    <label class="item-input-wrapper ion-ios-search">
+      <input type="text" placeholder="Search a friend by username..." ng-model="FCtrl.searchString" ng-change="FCtrl.searchFromInput(FCtrl.searchString)">
+    </label>
+</div>
+  <div class="list">
+      <div class="item item-avatar"
+        collection-repeat="user in FCtrl.searchResults"
+        <div class="row">
+            <img ng-src="{{ user.picture }}">
+            <span>{{ user.login }}</span>
+           <div class="col text-right">
+            <button ng-if="user.in_account === false" class="button button-small icon-right ion-plus button-positive" ng-click="FCtrl.addFriend(user.id)">Add</button>
+            </div>
+        </div>
+    </div>
+  </div>
+    </ion-content>
+</ion-modal-view>
