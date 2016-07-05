@@ -168,8 +168,8 @@
 
         this.searchFromInput = function (string) {
             if (string.length > 0) {
-                ShowService.searchShow(string, function (resp) {
-                    self.searchResults = resp.data.shows;
+                ShowService.searchShow(string, function (shows) {
+                    self.searchResults = shows;
                 }, function (err) {
                     $ionicPopup.alert({
                         title: "Uh-oh... something went wrong !",
