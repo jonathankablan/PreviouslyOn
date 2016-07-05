@@ -5,9 +5,10 @@
     </ion-header-bar>
     <ion-content class="padding">
       <div class="list">
-          <div class="item"
+          <div class="item item-thumbnail-left"
             collection-repeat="show in SCtrl.archivedShows"
             on-hold="SCtrl.getShowDetails(show)">
+            <img ng-src="{{ show.picture }}">
             <div class="row">
                 <span>{{ show.title }}</span>
                <div class="col text-right">
