@@ -143,8 +143,15 @@
         this.myShows = function (whichOnes, successCallback, errorCallback) {
             $http.get(this.apiUrl + "members/infos?only=shows", this.params)
                 .then(function (resp) {
-                    successCallback(self.filterShows(whichOnes, resp.data.member.shows));
+                    successCallback(self.getShowsPicture(self.filterShows(whichOnes, resp.data.member.shows)));
                 }, errorCallback);
+        };
+
+        this.getShowsPicture = function (shows) {
+            shows.forEach(function (show) {
+                show.picture = self.apiUrl + "pictures/shows?id=" + show.id + "&key=" + self.params.params.key + "&token=" + self.params.params.token + "&v=" + self.params.params.v;
+            });
+            return shows;
         };
 
         this.filterShows = function (whichOnes, shows) {
@@ -226,7 +233,9 @@
 
         this.searchShow = function (string, successCallback, errorCallback) {
             $http.get(this.apiUrl + "shows/search?title=" + string, this.params)
-                .then(successCallback, errorCallback);
+                .then(function (resp) {
+                    successCallback(self.getShowsPicture(resp.data.shows));
+                }, errorCallback);
         };
 
         this.addShow = function (id, successCallback, errorCallback) {
