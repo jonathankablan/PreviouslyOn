@@ -265,16 +265,16 @@
                     title: "Well done !",
                     template: "You just mark this episode as seen."
                 }).then(function () {
-                    self.showEpisodes(resp.data.episode.show.id);
                     self.hideEpisodeDetails();
+                    self.showEpisodes(resp.data.episode.show.id);
                 });
             }, function (err) {
                 $ionicPopup.alert({
                     title: "Uh-oh... something went wrong !",
                     template: err.data.errors[0].text
                 }).then(function () {
-                    self.hideEpisodes();
                     self.hideEpisodeDetails();
+                    self.hideEpisodes();
                 });
             });
         };
@@ -386,6 +386,7 @@
                     title: "Well done !",
                     template: "You just mark this episode as unseen."
                 }).then(function () {
+                    self.hideEpisodeDetails();
                     self.showEpisodes(resp.data.episode.show.id);
                 });
             }, function (err) {
@@ -393,6 +394,7 @@
                     title: "Uh-oh... something went wrong !",
                     template: err.data.errors[0].text
                 }).then(function () {
+                    self.hideEpisodeDetails();
                     self.hideEpisodes();
                 });
             });
