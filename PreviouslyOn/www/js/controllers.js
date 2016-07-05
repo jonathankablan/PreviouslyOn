@@ -628,6 +628,50 @@
             });
         };
 
+
+        $ionicModal.fromTemplateUrl("partials/friend-requests-modal.html", {
+            scope: $scope,
+            animation: "slide-in-up"
+        }).then(function (modal) {
+            $scope.friendRequestsModal = modal;
+        });
+
+        this.showFriendRequests = function () {
+            UserService.getFriendRequests("received", function (requests) {
+                self.friendRequests = requests;
+                $scope.friendRequestsModal.show();
+            }, function (err) {
+                $ionicPopup.alert({
+                    title: "Uh-oh... something went wrong !",
+                    template: err.data.errors[0].text
+                });
+            });
+        };
+
+        this.hideFriendRequests = function () {
+            self.getFriends();
+            $scope.friendRequestsModal.hide();
+        };
+
+        this.confirmFriendRequest = function (id) {
+            UserService.addFriend(id, function (resp) {
+                $ionicPopup.alert({
+                    title: "Well done :)",
+                    template: "You're now friend with '" + resp.data.member.login + "' !"
+                }).then(function () {
+                    self.getFriends();
+                    self.hideFriendRequests();
+                });
+            }, function (err) {
+                $ionicPopup.alert({
+                    title: "Uh-oh... something went wrong !",
+                    template: err.data.errors[0].text
+                }).then(function () {
+                    self.hideFriendRequests();
+                });
+            });
+        };
+
         this.getFriends();
     });
 }());
