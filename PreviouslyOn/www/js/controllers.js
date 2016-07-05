@@ -268,7 +268,7 @@
                     template: "You just mark this episode as seen."
                 }).then(function () {
                     self.hideEpisodeDetails();
-                    self.showEpisodes(resp.data.episode.show.id);
+                    self.showEpisodes(resp.data.episode.show);
                 });
             }, function (err) {
                 $ionicPopup.alert({
@@ -304,7 +304,7 @@
                                     title: "Well done !",
                                     template: "You just mark this episode as seen."
                                 }).then(function () {
-                                    self.showEpisodes(resp.data.episode.show.id);
+                                    self.showEpisodes(resp.data.episode.show);
                                     myPopup.close();
                                 });
                             }, function (err) {
@@ -327,7 +327,7 @@
                                     title: "Well done !",
                                     template: "You just mark this episode as seen and all the previouses."
                                 }).then(function () {
-                                    self.showEpisodes(resp.data.episode.show.id);
+                                    self.showEpisodes(resp.data.episode.show);
                                     myPopup.close();
                                 });
                             }, function (err) {
@@ -389,7 +389,7 @@
                     template: "You just mark this episode as unseen."
                 }).then(function () {
                     self.hideEpisodeDetails();
-                    self.showEpisodes(resp.data.episode.show.id);
+                    self.showEpisodes(resp.data.episode.show);
                 });
             }, function (err) {
                 $ionicPopup.alert({
