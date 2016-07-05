@@ -7,6 +7,9 @@
     </ion-nav-buttons>
   <ion-content>
   <div class="list">
+      <div class="item text-center">
+        <button class="button button-positive" ng-click="FCtrl.showFriendRequests()">Friend Requests</button>
+      </div>
       <div class="item item-avatar"
         collection-repeat="friend in FCtrl.friends"
         ng-click="FCtrl.manageFriend(friend.id)">
