@@ -22,6 +22,18 @@
                 <span class="input-label">Note</span>
                 {{ SCtrl.episodeToDetail.note.mean | number: 2}} / 5
             </p>
+            <div class="row" ng-if="SCtrl.episodeToDetail.user.seen === true">
+                <button class="button button-positive" ng-click="SCtrl.markEpisodeAsUnseen(SCtrl.episodeToDetail.id)">Mark as unseen</button>
+            </div>
+            <div class="row" ng-if="SCtrl.episodeToDetail.user.seen === false">
+                <button class="button button-positive" ng-click="SCtrl.markEpisodeAsSeen(SCtrl.episodeToDetail.id, false)">Mark as seen</button>
+            </div>
+            <div class="row" ng-if="SCtrl.episodeToDetail.user.seen === false">
+                <button class="button button-positive" ng-click="SCtrl.markEpisodeAsSeen(SCtrl.episodeToDetail.id, false)">Mark as seen + previous</button>
+            </div>
+            <div class="row">
+                <button class="button button-positive" ng-click="SCtrl.showCommentEpisode(SCtrl.episodeToDetail.id)">Add Comment</button>
+            </div>
         </div>
     </ion-content>
 </ion-modal-view>
