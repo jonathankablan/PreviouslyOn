@@ -24,7 +24,7 @@
             </p>
             <button ng-if="SCtrl.episodeToDetail.user.seen === true" class="button button-block button-positive" ng-click="SCtrl.markEpisodeAsUnseen(SCtrl.episodeToDetail.id)">Mark as unseen</button>
             <button ng-if="SCtrl.episodeToDetail.user.seen === false" class="button button-block button-positive" ng-click="SCtrl.markEpisodeAsSeen(SCtrl.episodeToDetail.id, false)">Mark as seen</button>
-            <button ng-if="SCtrl.episodeToDetail.user.seen === false" class="button button-block button-positive" ng-click="SCtrl.markEpisodeAsSeen(SCtrl.episodeToDetail.id, false)">Mark as seen + previous</button>
+            <button ng-if="SCtrl.episodeToDetail.user.seen === false" class="button button-block button-positive" ng-click="SCtrl.markEpisodeAsSeen(SCtrl.episodeToDetail.id, true)">Mark as seen + previous</button>
             <button class="button button-block button-positive" ng-click="SCtrl.showCommentEpisode(SCtrl.episodeToDetail.id)">Add Comment</button>
         </div>
     </ion-content>
