@@ -11,11 +11,12 @@
     on-refresh="SCtrl.getMyCurrentShows()">
   </ion-refresher>
   <div class="list">
-      <div class="item"
+      <div class="item item-thumbnail-left"
         collection-repeat="show in SCtrl.myShows | orderBy: '+title'"
         on-hold="SCtrl.getShowDetails(show)"
         ng-click="SCtrl.showEpisodes(show.id)">
-        <p>{{ show.title }}</p>
+        <img ng-src="{{ show.picture }}">
+        <h2>{{ show.title }}</h2>
     </div>
   </div>
   </ion-content>
