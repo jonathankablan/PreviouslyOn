@@ -2,7 +2,7 @@
 <widget id="com.ionicframework.previouslyon" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>PreviouslyOn</name>
   <description>
-        Un client de papa pour BetaSeries
+        Un client de papa pour ĺ'API de BetaSeries
   </description>
   <author email="rodolphe.laidet@epitech.eu" href="http://rodolphe-laidet.com/">
     laidet_r
