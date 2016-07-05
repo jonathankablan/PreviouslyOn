@@ -266,6 +266,7 @@
                     template: "You just mark this episode as seen."
                 }).then(function () {
                     self.showEpisodes(resp.data.episode.show.id);
+                    self.hideEpisodeDetails();
                 });
             }, function (err) {
                 $ionicPopup.alert({
@@ -273,6 +274,7 @@
                     template: err.data.errors[0].text
                 }).then(function () {
                     self.hideEpisodes();
+                    self.hideEpisodeDetails();
                 });
             });
         };
@@ -280,7 +282,6 @@
         this.showPopupEpisode = function (id) {
             $scope.data = {};
             var myPopup;
-            self.episodeToComment = id;
 
             myPopup = $ionicPopup.show({
                 template: "What do you want to do ?",
@@ -342,7 +343,7 @@
                         text: "<b>Comment</b>",
                         type: "button-positive",
                         onTap: function () {
-                            self.showCommentEpisode();
+                            self.showCommentEpisode(id);
                             myPopup.close();
                         }
                     }
@@ -351,7 +352,8 @@
 
         };
 
-        this.showCommentEpisode = function () {
+        this.showCommentEpisode = function (id) {
+            self.episodeToComment = id;
             $scope.commentEpisodeModal.show();
 
         };
