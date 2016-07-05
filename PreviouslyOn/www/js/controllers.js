@@ -288,7 +288,10 @@
                 scope: $scope,
                 cssClass: "popup-vertical-buttons",
                 buttons: [
-                    {text: "Cancel"},
+                    {
+                        text: "Cancel",
+                        type: "button-positive"
+                    },
                     {
                         text: "<b>Mark as Seen</b>",
                         type: "button-positive",
@@ -482,7 +485,10 @@
                 scope: $scope,
                 cssClass: "popup-vertical-buttons",
                 buttons: [
-                    {text: "Cancel"},
+                    {
+                        text: "Cancel",
+                        type: "button-positive"
+                    },
                     {
                         text: "<b>Delete</b>",
                         type: "button-assertive",
