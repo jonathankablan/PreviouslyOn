@@ -14,7 +14,7 @@
       <div class="item item-thumbnail-left"
         collection-repeat="show in SCtrl.myShows | orderBy: '+title'"
         on-hold="SCtrl.getShowDetails(show)"
-        ng-click="SCtrl.showEpisodes(show.id)">
+        ng-click="SCtrl.showEpisodes(show)">
         <img ng-src="{{ show.picture }}">
         <h2>{{ show.title }}</h2>
     </div>

@@ -202,10 +202,12 @@
             });
         };
 
-        this.showEpisodes = function (id) {
+        this.showEpisodes = function (show) {
+            this.showToDetail = show;
+
             var promises = [];
             promises[0] = $q(function (resolve, reject) {
-                ShowService.getEpisodes("unseen", id, function (episodes) {
+                ShowService.getEpisodes("unseen", show.id, function (episodes) {
                     self.unseenEpisodes = episodes;
                     resolve();
                 }, function (err) {
@@ -213,7 +215,7 @@
                 });
             });
             promises[1] = $q(function (resolve, reject) {
-                ShowService.getEpisodes("seen", id, function (episodes) {
+                ShowService.getEpisodes("seen", show.id, function (episodes) {
                     self.seenEpisodes = episodes;
                     resolve();
                 }, function (err) {
@@ -231,8 +233,8 @@
                     self.hideDetails();
                 });
             });
-
         };
+
         this.hideEpisodes = function () {
             $scope.episodesModal.hide();
             self.showUnseenEpisodes();
