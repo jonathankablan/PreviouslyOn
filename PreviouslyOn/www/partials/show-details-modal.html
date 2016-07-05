@@ -31,12 +31,10 @@
                 <span class="input-label">Note</span>
                 {{ SCtrl.showToDetail.notes.mean | number: 2}} / 5
             </p>
-            <center>
-                <button ng-if="SCtrl.showToDetail.user.remaining !== 0 && SCtrl.showToDetail.user.archived === false" class="button button-assertive" ng-click="SCtrl.deleteShow(SCtrl.showToDetail.id)">Delete</button>
-                <button ng-if="SCtrl.showToDetail.user.remaining !== 0 && SCtrl.showToDetail.user.archived === false" class="button icon-left ion-ios-archive button-positive" ng-click="SCtrl.archiveShow(SCtrl.showToDetail.id)">Archiver</button>
-                <button ng-if="SCtrl.showToDetail.user.archived === true" class="button icon-left ion-ios-archive button-positive" ng-click="SCtrl.unarchiveShow(SCtrl.showToDetail.id)">Unarchive</button>
-                <button ng-if="SCtrl.showToDetail.user.remaining === 0" class="button icon-left ion-plus button-positive" ng-click="SCtrl.addShow(SCtrl.showToDetail.id)">Add</button>
-            </center>
+            <button ng-if="SCtrl.showToDetail.user.remaining !== 0 && SCtrl.showToDetail.user.archived === false" class="button button-block button-assertive" ng-click="SCtrl.deleteShow(SCtrl.showToDetail.id)">Delete</button>
+            <button ng-if="SCtrl.showToDetail.user.remaining !== 0 && SCtrl.showToDetail.user.archived === false" class="button button-block icon-left ion-ios-archive button-positive" ng-click="SCtrl.archiveShow(SCtrl.showToDetail.id)">Archiver</button>
+            <button ng-if="SCtrl.showToDetail.user.archived === true" class="button button-block icon-left ion-ios-archive button-positive" ng-click="SCtrl.unarchiveShow(SCtrl.showToDetail.id)">Unarchive</button>
+            <button ng-if="SCtrl.showToDetail.user.remaining === 0" class="button button-block icon-left ion-plus button-positive" ng-click="SCtrl.addShow(SCtrl.showToDetail.id)">Add</button>
         </div>
     </ion-scroll>
     </ion-content>
