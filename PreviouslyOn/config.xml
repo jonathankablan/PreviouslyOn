@@ -3,11 +3,10 @@
   <name>PreviouslyOn</name>
   <description>
         Un client de papa pour BetaSeries
-    </description>
-    </description>
-    <author email="rodolphe.laidet@epitech.eu" href="http://rodolphe-laidet.com/">
-      laidet_r
-    </author>
+  </description>
+  <author email="rodolphe.laidet@epitech.eu" href="http://rodolphe-laidet.com/">
+    laidet_r
+  </author>
   <content src="index.html"/>
   <access origin="*"/>
   <preference name="webviewbounce" value="false"/>
