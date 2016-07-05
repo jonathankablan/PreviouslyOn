@@ -569,7 +569,6 @@
 
         this.addFriend = function (id) {
             UserService.addFriend(id, function (resp) {
-                console.log(resp);
                 $ionicPopup.alert({
                     title: "Well done :)",
                     template: "You've just added '" + resp.data.member.login + "' to your friends !"
